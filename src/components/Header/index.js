@@ -1,7 +1,7 @@
 import React from "react";
-import "./style.css";
 
-function Footer() {
+
+function Header() {
   return (
     <header className="header">
       <h1>EMPLOYEES DIRECTORY</h1>
@@ -9,4 +9,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default Header;

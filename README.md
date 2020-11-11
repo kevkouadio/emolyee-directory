@@ -14,7 +14,7 @@ It is an employee directory application developed with React using the ramdomuse
 * [Questions](#Questions)
 
 ## Link
-[Link to deployed App](https://kevkouadio.github.io/emolyee-directory/)
+[Link to deployed App](https://kevkouadio.github.io/employee-directory/)
 
 ## Usage
 Enter a letter in the input field to search. Click on the name arrow to sort by name.

@@ -7,7 +7,6 @@ import React from "react";
 
 
 function directory() {
-   
   return (
         <thead>
             <tr align="center">

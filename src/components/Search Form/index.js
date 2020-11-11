@@ -1,13 +1,15 @@
 import React from "react";
 
-function SearchForm(props) {
+function SearchForm({ updadeFilter }) {
+  const handleSearchTerm = (e) => {
+    updadeFilter({name: e.target.value});
+  };
   return (
     <form>
       <div className="form-group">
         <label htmlFor="search">Search:</label>
         <input
-          onChange={props.handleInputChange}
-          value={props.value}
+          onChange={handleSearchTerm}
           name="search"
           type="text"
           className="form-control"

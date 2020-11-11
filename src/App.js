@@ -4,16 +4,13 @@ import Footer from "./components/Footer";
 import SearchForm from "./components/Search Form";
 import Thead from "./components/Thead";
 import Tbody from "./components/Tbody"
-// import API from "./utils/API"
+
 
 function App() {
-
   const [employees, setEmployees] = useState([]);
+  const [ searchTerm, setSearchTerm ] = useState("");
 
 
-  // Note: the empty deps array [] means
-  // this useEffect will run once
-  // similar to componentDidMount()
   useEffect(() => {
       fetch("https://randomuser.me/api/?results=200&nat=us")
         .then((res) => res.json())
@@ -23,14 +20,19 @@ function App() {
     
   }, []);
 
+  function handleSearchTerm(event)  {
+    setSearchTerm(event.target.value)
+}
+  const filteredEmployees = employees.filter(employee => `${employee.name.first.toLowerCase()}  ${employee.name.last.toLowerCase()}`.includes(searchTerm.toLowerCase()));
+
   return (
       <div className="container">
         <Header />
-        <SearchForm />
+        <SearchForm onSearch={handleSearchTerm} searchTerm={searchTerm} />         
           <table className="table">
             <Thead />
             <tbody>
-              <Tbody employees={employees}/>
+              <Tbody employees={filteredEmployees}/>
             </tbody>
           </table>
         <Footer />

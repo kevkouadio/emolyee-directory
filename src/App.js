@@ -9,6 +9,7 @@ import Tbody from "./components/Tbody"
 function App() {
   const [employees, setEmployees] = useState([]);
   const [ searchTerm, setSearchTerm ] = useState("");
+  const [ sorted, setSorted] = useState(false);
 
 
   useEffect(() => {
@@ -25,12 +26,23 @@ function App() {
 }
   const filteredEmployees = employees.filter(employee => `${employee.name.first.toLowerCase()}  ${employee.name.last.toLowerCase()}`.includes(searchTerm.toLowerCase()));
 
+  function handleSortByName() {
+    // sort array ascending or descending by first name
+    if (!sorted) {
+        setEmployees(employees.sort((a, b) => `${a.name.first} ${a.name.last}` > `${b.name.first} ${b.name.last}`? 1 : -1));
+        setSorted(true);
+    } else {
+        setEmployees(employees.sort((a, b) => `${a.name.first} ${a.name.last}` > `${b.name.first} ${b.name.last}` ? -1 : 1));
+        setSorted(false);
+    }
+}
+
   return (
       <div className="container">
         <Header />
         <SearchForm onSearch={handleSearchTerm} searchTerm={searchTerm} />         
           <table className="table">
-            <Thead />
+            <Thead handleSortByName={handleSortByName}/>
             <tbody>
               <Tbody employees={filteredEmployees}/>
             </tbody>

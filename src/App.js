@@ -11,7 +11,7 @@ function App() {
   const [ searchTerm, setSearchTerm ] = useState("");
   const [ sorted, setSorted] = useState(false);
 
-
+  //API call to render employees data
   useEffect(() => {
       fetch("https://randomuser.me/api/?results=200&nat=us")
         .then((res) => res.json())
@@ -20,7 +20,8 @@ function App() {
         })
     
   }, []);
-
+  
+  //function to display input searched names
   function handleSearchTerm(event)  {
     setSearchTerm(event.target.value)
 }
@@ -38,17 +39,19 @@ function App() {
 }
 
   return (
-      <div className="container">
-        <Header />
-        <SearchForm onSearch={handleSearchTerm} searchTerm={searchTerm} />         
-          <table className="table">
-            <Thead handleSortByName={handleSortByName}/>
-            <tbody>
-              <Tbody employees={filteredEmployees}/>
-            </tbody>
-          </table>
-        <Footer />
-      </div>
+        <>
+          <Header />
+            <div className="container">
+                <SearchForm onSearch={handleSearchTerm} searchTerm={searchTerm} />         
+                <table className="table">
+                  <Thead handleSortByName={handleSortByName}/>
+                  <tbody>
+                    <Tbody employees={filteredEmployees}/>
+                  </tbody>
+                </table>
+            </div>
+          <Footer />
+      </>
    );
   }
   

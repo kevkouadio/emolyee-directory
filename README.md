@@ -26,7 +26,8 @@ This app is under the MIT License.
 I would be happy if anyone decide to improve it. All comments and suggestions are welcomed.
 
 ## Screenshot
-![](Screenshot/Screenshot1.png)
+![](public/Screenshot1.png)
+
 ## Questions
 Contact me: kevkouadio@gmail.com
 
